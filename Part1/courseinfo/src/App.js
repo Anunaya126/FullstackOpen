@@ -15,9 +15,9 @@ function Content(props) {
   console.log(props)
   return (
     <>
-      <Part name='Fundamentals of React' exercise='10' />
-      <Part name='Using props to pass data' exercise='7' />
-      <Part name='State of a component' exercise='14' />
+      <Part name={props.parts[0].name} exercise={props.parts[0].exercises} />
+      <Part name={props.parts[1].name} exercise={props.parts[1].exercises} />
+      <Part name={props.parts[2].name} exercise={props.parts[2].exercises} />
     </>
   )
 }
@@ -31,7 +31,7 @@ function Part(props) {
 
 function Total(props) {
   return (
-    <><p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p></>
+    <><p>Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p></>
   )
 
 }
@@ -56,8 +56,8 @@ function App() {
   return (
     <div>
       <Header course={course} />
-      <Content />
-      <Total exercises1={parts[0].exercises} exercises2={parts[1].exercises} exercises3={parts[2].exercises} />
+      <Content parts={parts}/>
+      <Total parts ={parts}/>
     </div>
   )
 }
