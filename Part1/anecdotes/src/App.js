@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 function App() {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -9,20 +10,28 @@ function App() {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
-  function getRandomInt(max){
-    return Math.floor(Math.random()* max)
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max)
   }
 
   const [selected, setSelected] = useState(0)
+  const [vote, setVote] = useState([0,0,0,0,0,0,0])
 
   const handleClick = () => {
-    setSelected(getRandomInt(anecdotes.length-1))
+    setSelected(getRandomInt(anecdotes.length - 1))
+  }
+  const handleVote = () => {
+    const newVote =[...vote]
+    newVote[selected]+=1
+    setVote(newVote)
   }
   return (
     <div className="App">
       {anecdotes[selected]}
-      <br/>
+      <br />
+      <p>has {vote[selected]} votes</p>
       <button onClick={handleClick}>next anecdote</button>
+      <button onClick={handleVote}>vote</button>
     </div>
   );
 }
