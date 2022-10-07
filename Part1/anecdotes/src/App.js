@@ -25,13 +25,21 @@ function App() {
     newVote[selected]+=1
     setVote(newVote)
   }
+
+  const max_val = Math.max(...vote)
+  const index_max=vote.indexOf(max_val)
+ 
+
   return (
     <div className="App">
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <br />
       <p>has {vote[selected]} votes</p>
       <button onClick={handleClick}>next anecdote</button>
       <button onClick={handleVote}>vote</button>
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[index_max]}
     </div>
   );
 }
