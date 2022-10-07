@@ -9,32 +9,21 @@ const Display = props=> <div>{props.text}:{props.clicks}</div>
 
 function App() {
 
-  const [clicks, setClicks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  })
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
   const handleGoodClicks = () => {
-    const newClicks = {
-      ...clicks,
-      good: clicks.good + 1
-    }
-    setClicks(newClicks)
+    
+    setGood(good +1)
   }
   const handleNeutralClicks = () => {
-    const newClicks = {
-      ...clicks,
-      neutral: clicks.neutral + 1
-    }
-    setClicks(newClicks)
+    
+    setNeutral(neutral+1)
   }
   const handleBadClicks = () => {
-    const newClicks = {
-      ...clicks,
-      bad: clicks.bad + 1
-    }
-    setClicks(newClicks)
+    
+    setBad(bad+1)
   }
   return (
     <div>
@@ -45,9 +34,9 @@ function App() {
       <Button handleClick={handleBadClicks} text='Bad' />
       <h2>Statistics</h2>
       <br/>
-      <Display clicks={clicks.good} text='good'/>
-      <Display clicks={clicks.neutral} text='neutral'/>
-      <Display clicks={clicks.bad} text='bad'/>
+      <Display clicks={good} text='good'/>
+      <Display clicks={neutral} text='neutral'/>
+      <Display clicks={bad} text='bad'/>
     </div>
   );
 }
